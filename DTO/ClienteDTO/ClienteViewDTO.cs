@@ -1,4 +1,4 @@
-﻿using MyFirstAPI.Models;
+﻿using MyFirstAPI.DTO.ContaDTO;
 namespace MyFirstAPI.DTO.ClienteDTO
 {
     public class ClienteViewDTO
@@ -7,13 +7,14 @@ namespace MyFirstAPI.DTO.ClienteDTO
         public string Email { get; set; }
         public string CPF { get; set; }
 
-        //public List<Conta> contas { get; set; }
+        public List<ContaByClienteViewDTO> contas { get; set; }
 
-        public ClienteViewDTO(string name, string email, string cpf)
+        public ClienteViewDTO(string name, string email, string cpf, List<ContaByClienteViewDTO> contas)
         {
             Name = name;
             Email = email;
             CPF = cpf;
+            this.contas = contas;
         }
     }
 }

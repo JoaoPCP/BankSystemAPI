@@ -6,6 +6,6 @@ namespace MyFirstAPI.Service
     public interface IClienteService
     {
         public Task<ClienteViewDTO> CreateClienteAsync(ClienteInputDTO cliente);
-        public Task<ClienteViewDTO?> GetByClienteIdAsync(Guid id);
+        public Task<ClienteViewDTO?> GetClienteByIdAsync(Guid id);
     }
 }

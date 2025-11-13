@@ -33,9 +33,10 @@ namespace MyFirstAPI.Repository
 
         public async Task<Conta?> GetByIdAsync(Guid id)
         {
-            Conta? conta = await _context.Contas
-                                                .Where(c => c.Id == id)
-                                                .Include(c => c.Titular).FirstAsync();
+            Conta? conta = await _context.Contas.AsNoTracking()
+                                                .Include(c => c.Titular)
+                                                .FirstAsync(c => c.Id == id);
+                                                
             return conta;
 
         }
@@ -51,6 +52,15 @@ namespace MyFirstAPI.Repository
                     .SetProperty(c => c.UpdatedAt, DateTime.UtcNow)
                 );
             return response > 0 ? await GetByIdAsync(conta.Id) : null;
+        }
+
+        public async Task<List<Conta>> GetContaByTitularID(Guid clienteId)
+        {
+            List<Conta> contas = await _context.Contas
+                                     .AsNoTracking()
+                                     .Where(c => c.TitularID == clienteId)
+                                     .ToListAsync();
+            return contas;
         }
     }
 }

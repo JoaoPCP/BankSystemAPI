@@ -2,7 +2,6 @@
 using MyFirstAPI.Models;
 using MyFirstAPI.Models.Enum;
 using MyFirstAPI.Repository;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MyFirstAPI.Service
 {

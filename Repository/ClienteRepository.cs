@@ -14,9 +14,7 @@ namespace MyFirstAPI.Repository
         }
         public async Task<Cliente?> GetClienteByIdAsync(Guid id)
         {
-            Cliente? cliente = await _context.Clientes
-                                                      .Where(c => c.Id == id)
-                                                      .FirstAsync();
+            Cliente? cliente = await _context.Clientes.FirstAsync(c => c.Id == id);
             return cliente;
         }
     }

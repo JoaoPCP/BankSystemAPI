@@ -35,7 +35,7 @@ namespace MyFirstAPI.Controllers
         {
             try
             {
-                ClienteViewDTO? cliente = await service.GetByClienteIdAsync(id);
+                ClienteViewDTO? cliente = await service.GetClienteByIdAsync(id);
                 if (cliente == null)
                 {
                     return NotFound(new { message = "Cliente não encontrado" });
