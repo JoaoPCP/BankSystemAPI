@@ -8,6 +8,7 @@ using MyFirstAPI.Models;
 using MyFirstAPI.Models.Enum;
 using MyFirstAPI.Repository;
 using MyFirstAPI.Service;
+using MyFirstAPI.UseCase.Contas.GetAllContas;
 using System;
 
 namespace MyFirstAPI.Controllers
@@ -18,11 +19,11 @@ namespace MyFirstAPI.Controllers
     {
 
         [HttpGet]
-        public async Task<ActionResult<List<ContaViewDTO>>> GetContas()
+        public async Task<ActionResult<List<ContaViewDTO>>> GetContas([FromServices] GetAllContasHandler getAll)
         {
             try
             {
-                var contasResponse = await service.GetContasAsync();
+                var contasResponse = await getAll.Execute();
                 return Ok(contasResponse);
             }
             catch (Exception ex)

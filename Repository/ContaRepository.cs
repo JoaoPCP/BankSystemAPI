@@ -27,7 +27,7 @@ namespace MyFirstAPI.Repository
 
         public async Task<List<Conta>> GetAllAsync()
         {
-            List<Conta> response = await _context.Contas.ToListAsync();
+            List<Conta> response = await _context.Contas.Include(c => c.Titular).ToListAsync();
             return response;
         }
 

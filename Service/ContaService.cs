@@ -19,7 +19,10 @@ namespace MyFirstAPI.Service
         public async Task<ContaViewDTO?> GetContaByIdAsync(Guid id)
         {
             Conta? conta = await repo.GetByIdAsync(id);
-            if (conta == null) return null;
+            if (conta == null)
+            {
+                throw new Exception("Conta não encontrada");
+            }
             ContaViewDTO response = new ContaViewDTO(conta.Numero, conta.Saldo, conta.Titular.Name);
             return response;
         }
